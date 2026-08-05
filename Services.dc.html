@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Services | Temporary Staffing, Direct Hire, Payroll &amp; HR Consulting | Manostat</title>
+<meta name="description" content="Temporary staffing, direct hire staffing, payroll management, HR consulting, workforce consulting and professional recruitment from Manostat Talent Solutions Pvt. Ltd., Karnataka.">
+<link rel="stylesheet" href="styles.css">
+<script src="_ds/modernist-a969e3ec-0fac-439e-8ff7-f6b457d517c2/_ds_bundle.js"></script>
+<link rel="stylesheet" href="brand.css">
+<link rel="icon" type="image/png" href="assets/logo-manostat.png">
+<script src="site.js"></script>
+</helmet>
+<div style="background:#fff">
+<dc-import name="SiteHeader" active="Services" hint-size="100%,120px"></dc-import>
+
+<main>
+  <section style="background:var(--color-surface);border-bottom:2px solid var(--color-divider)">
+    <div style="max-width:var(--shell);margin:0 auto;padding:clamp(28px,3vw,40px) clamp(16px,4vw,40px) clamp(44px,5vw,72px)">
+      <nav aria-label="Breadcrumb" style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-55);display:flex;gap:10px;align-items:center">
+        <a href="index.html" style="color:inherit;text-decoration:none" style-hover="color:var(--navy)">Home</a><span>/</span><span style="color:var(--navy)">Services</span>
+      </nav>
+      <h1 style="margin:26px 0 0;font-size:clamp(29px,3.3vw,42px);letter-spacing:-.03em;line-height:1.04;max-width:22ch">Staffing and HR support, end to end.</h1>
+      <p style="margin:22px 0 0;font-size:clamp(15.5px,1.05vw,16.5px);line-height:1.7;color:var(--ink-70);max-width:60ch">A comprehensive range of staffing and recruitment services tailored to every client's unique workforce needs.</p>
+      <div style="margin-top:32px;display:flex;flex-wrap:wrap;gap:8px">
+        <sc-for list="{{ services }}" as="s" hint-placeholder-count="6">
+          <a href="{{ s.anchor }}" style="display:inline-block;padding:9px 14px;border:1px solid var(--color-divider);background:#fff;font-size:12.5px;font-weight:600;letter-spacing:.04em;text-decoration:none;color:var(--color-text)" style-hover="background:var(--navy);color:#fff;border-color:var(--navy)">{{ s.title }}</a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <sc-for list="{{ services }}" as="s" hint-placeholder-count="6">
+    <section id="{{ s.id }}" style="border-bottom:2px solid var(--color-divider);scroll-margin-top:140px">
+      <div style="max-width:var(--shell);margin:0 auto;padding:clamp(44px,5.5vw,84px) clamp(16px,4vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,64px)">
+        <div data-reveal="">
+          <div style="font-family:var(--font-heading);font-weight:800;font-size:clamp(32px,3.4vw,44px);color:var(--color-accent-200);line-height:.9;letter-spacing:-.04em">{{ s.num }}</div>
+          <h2 style="margin:20px 0 0;font-size:clamp(22px,2.3vw,29px);letter-spacing:-.025em;line-height:1.08">{{ s.title }}</h2>
+          <p style="margin:18px 0 0;font-size:15.5px;line-height:1.8;color:var(--ink-70);max-width:48ch">{{ s.body }}</p>
+          <a href="#inquiry" class="btn btn-primary" style="margin-top:26px;padding:15px 24px;font-size:12.5px;letter-spacing:.07em;text-transform:uppercase">Enquire about this service</a>
+        </div>
+        <div data-reveal="" style="border-top:4px solid var(--navy);padding-top:26px">
+          <h6 style="margin:0 0 18px;color:var(--ink-55)">What it includes</h6>
+          <div style="display:grid;gap:0">
+            <sc-for list="{{ s.points }}" as="p" hint-placeholder-count="4">
+              <div style="display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--line);font-size:15px;line-height:1.7">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="3" style="flex:none;margin-top:4px"><path d="M4 12l5 5L20 6"/></svg>
+                <span>{{ p }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </section>
+  </sc-for>
+
+  <section style="background:var(--color-accent-900);color:#fff;border-bottom:2px solid var(--color-divider)">
+    <div style="max-width:var(--shell);margin:0 auto;padding:clamp(52px,6vw,88px) clamp(16px,4vw,40px)">
+      <p style="margin:0;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--color-accent-2-300)">Recruitment tools</p>
+      <h2 style="margin:14px 0 0;color:#fff;font-size:clamp(22px,2.3vw,29px);letter-spacing:-.025em;max-width:26ch">How we reach active and passive candidates.</h2>
+      <div style="margin-top:clamp(30px,3.5vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2px;background:rgba(255,255,255,.18)">
+        <sc-for list="{{ tools }}" as="t" hint-placeholder-count="3">
+          <div data-reveal="" style="background:var(--color-accent-900);padding:clamp(24px,2.6vw,34px)">
+            <div style="font-family:var(--font-heading);font-weight:800;font-size:13px;color:var(--color-accent-2-300);letter-spacing:.1em">{{ t.num }}</div>
+            <p style="margin:16px 0 0;font-size:16px;line-height:1.7;color:rgba(255,255,255,.85)">{{ t.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="inquiry" style="scroll-margin-top:140px">
+    <div style="max-width:var(--shell);margin:0 auto;padding:clamp(52px,6vw,88px) clamp(16px,4vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(32px,4vw,64px)">
+      <div>
+        <p style="margin:0;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--teal)">Service inquiry</p>
+        <h2 style="margin:14px 0 0;font-size:clamp(22px,2.3vw,29px);letter-spacing:-.025em;max-width:20ch">Tell us what you need.</h2>
+        <p style="margin:20px 0 0;font-size:15.5px;line-height:1.8;color:var(--ink-70);max-width:44ch">Send a brief and we will come back with a shortlist plan, timelines and commercials. We would be happy to discuss your staffing needs and provide customised recruitment solutions.</p>
+        <div style="margin-top:28px;border-top:2px solid var(--color-divider);padding-top:20px;font-size:15px;line-height:1.8;color:var(--ink-70)">
+          Office: +91 95381 24170<br>manostattalentsolutions@gmail.com<br>Mon–Sat, 9:30 AM – 6:30 PM IST
+        </div>
+      </div>
+      <form novalidate onSubmit="{{ onSubmit }}" style="background:var(--color-surface);border:1px solid var(--color-divider);padding:clamp(24px,3vw,38px);display:grid;gap:18px">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px">
+          <div class="field">
+            <label for="si-name">Full name *</label>
+            <input class="input" id="si-name" name="name" style="min-height:44px" placeholder="Your name">
+          </div>
+          <div class="field">
+            <label for="si-company">Company *</label>
+            <input class="input" id="si-company" name="company" style="min-height:44px" placeholder="Company name">
+          </div>
+          <div class="field">
+            <label for="si-email">Work email *</label>
+            <input class="input" id="si-email" name="email" type="email" style="min-height:44px" placeholder="name@company.com">
+          </div>
+          <div class="field">
+            <label for="si-phone">Phone *</label>
+            <input class="input" id="si-phone" name="phone" style="min-height:44px" placeholder="10-digit mobile">
+          </div>
+        </div>
+        <div class="field">
+          <label for="si-service">Service required *</label>
+          <select class="input" id="si-service" name="service" style="min-height:44px">
+            <option value="">Select a service</option>
+            <sc-for list="{{ serviceNames }}" as="n" hint-placeholder-count="6">
+              <option value="{{ n }}">{{ n }}</option>
+            </sc-for>
+          </select>
+        </div>
+        <div class="field">
+          <label for="si-msg">Requirement details</label>
+          <textarea class="input" id="si-msg" name="message" style="min-height:110px" placeholder="Roles, headcount, location, timeline"></textarea>
+        </div>
+        <sc-if value="{{ hasErrors }}" hint-placeholder-val="{{ false }}">
+          <div role="alert" style="border-left:4px solid var(--color-accent);background:var(--color-accent-100);padding:14px 16px;font-size:14px;color:var(--color-accent-700)">{{ errorText }}</div>
+        </sc-if>
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <div role="status" style="border-left:4px solid var(--teal);background:var(--color-accent-2-100);padding:14px 16px;font-size:14px;color:var(--color-accent-2-700)">Thank you, your enquiry has been captured. Our team will respond within one business day. (Demo form: no data is transmitted.)</div>
+        </sc-if>
+        <button type="submit" class="btn btn-primary" style="justify-self:start;padding:16px 28px;font-size:13px;letter-spacing:.07em;text-transform:uppercase">Submit enquiry</button>
+        <p style="margin:0;font-size:11.5px;color:var(--ink-55)">Front-end validation only, no backend is connected in this build.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { errors: [], sent: false };
+  renderVals() {
+    const services = [
+      { id: 'temporary', num: '01', title: 'Temporary Staffing', body: 'Temporary staffing solutions for businesses that need short-term support to meet their staffing needs, seasonal peaks, project ramp-ups and cover for absence.', points: ['Sourcing and deployment against short lead times', 'Attendance, wage and statutory administration', 'Replacement support for the contract duration', 'ESI and PF benefits administered under Labour Laws'] },
+      { id: 'direct-hire', num: '02', title: 'Direct Hire Staffing', body: 'Direct-hire staffing solutions for businesses that need permanent employees to fill specific roles, screened against your brief before you see them.', points: ['Role brief and ideal candidate profile definition', 'Head hunting, portals and in-house database search', 'Telephonic screening and structured shortlist', 'Offer, joining and onboarding coordination'] },
+      { id: 'payroll', num: '03', title: 'Payroll Management', body: 'Payroll processing, tax filing and related tasks handled for you, so your team can focus on running the business.', points: ['Monthly payroll processing and payslips', 'Statutory deductions, filings and challans', 'ESI and PF registration and remittance support', 'Full-and-final settlements and records'] },
+      { id: 'hr-consulting', num: '04', title: 'HR Consulting', body: 'Assistance with employee relations, performance management and compliance for HR-related tasks, sized to your organisation.', points: ['Employee relations and grievance support', 'Performance management frameworks', 'HR policy, documentation and audits', 'Labour-law compliance guidance'] },
+      { id: 'workforce', num: '05', title: 'Workforce Consulting', body: 'Strategic advisory services to help businesses plan, manage and optimise their workforce effectively.', points: ['Manpower planning and headcount modelling', 'Shift, deployment and productivity review', 'Cost-per-hire and attrition analysis', 'Skill-gap mapping and hiring roadmaps'] },
+      { id: 'professional', num: '06', title: 'Professional Recruitment', body: 'Core head hunting and referencing for specialist and senior mandates, conducted to strict ethical standards with complete confidentiality for candidates and clients.', points: ['Confidential search and market mapping', 'Reference and background verification', 'Competency-based assessment support', 'Discreet negotiation and closure'] }
+    ];
+    const e = this.state.errors;
+    return {
+      services: services.map(s => Object.assign({}, s, { anchor: '#' + s.id })),
+      serviceNames: services.map(s => s.title),
+      tools: [
+        { num: '01', body: 'Core head hunting and referencing across our network and in-house database.' },
+        { num: '02', body: 'Job adverts on all major job portals, LinkedIn, Naukri, Indeed, social networks and others.' },
+        { num: '03', body: 'Awareness campaigns on social media platforms to reach deserving and passive candidates.' }
+      ],
+      hasErrors: e.length > 0,
+      errorText: e.join(' '),
+      sent: this.state.sent,
+      onSubmit: (ev) => {
+        ev.preventDefault();
+        const f = ev.target;
+        const errs = [];
+        const v = n => (f.elements[n] && f.elements[n].value || '').trim();
+        if (v('name').length < 2) errs.push('Enter your full name.');
+        if (!v('company')) errs.push('Enter your company name.');
+        if (!/^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i.test(v('email'))) errs.push('Enter a valid work email address.');
+        if (!/^[0-9+\-\s]{10,15}$/.test(v('phone'))) errs.push('Enter a valid phone number.');
+        if (!v('service')) errs.push('Select the service you need.');
+        this.setState({ errors: errs, sent: errs.length === 0 });
+        if (!errs.length) f.reset();
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

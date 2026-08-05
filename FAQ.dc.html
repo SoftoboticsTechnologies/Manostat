@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>FAQ | Hiring Process, Staffing Solutions &amp; Payroll Services | Manostat</title>
+<meta name="description" content="Frequently asked questions about Manostat Talent Solutions: hiring process, staffing solutions, payroll services and how to contact support.">
+<link rel="stylesheet" href="styles.css">
+<script src="_ds/modernist-a969e3ec-0fac-439e-8ff7-f6b457d517c2/_ds_bundle.js"></script>
+<link rel="stylesheet" href="brand.css">
+<link rel="icon" type="image/png" href="assets/logo-manostat.png">
+<script src="site.js"></script>
+</helmet>
+<div style="background:#fff">
+<dc-import name="SiteHeader" active="FAQ" hint-size="100%,120px"></dc-import>
+
+<main>
+  <section style="background:var(--color-surface);border-bottom:2px solid var(--color-divider)">
+    <div style="max-width:var(--shell);margin:0 auto;padding:clamp(28px,3vw,40px) clamp(16px,4vw,40px) clamp(44px,5vw,72px)">
+      <nav aria-label="Breadcrumb" style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-55);display:flex;gap:10px;align-items:center">
+        <a href="index.html" style="color:inherit;text-decoration:none" style-hover="color:var(--navy)">Home</a><span>/</span><span style="color:var(--navy)">FAQ</span>
+      </nav>
+      <h1 style="margin:26px 0 0;font-size:clamp(29px,3.3vw,42px);letter-spacing:-.03em;line-height:1.04;max-width:20ch">Frequently asked questions.</h1>
+      <p style="margin:22px 0 0;font-size:clamp(15.5px,1.05vw,16.5px);line-height:1.7;color:var(--ink-70);max-width:58ch">Hiring process, staffing solutions, payroll services and support, answered.</p>
+    </div>
+  </section>
+
+  <sc-for list="{{ groups }}" as="g" hint-placeholder-count="4">
+    <section style="border-bottom:2px solid var(--color-divider)">
+      <div style="max-width:var(--shell);margin:0 auto;padding:clamp(40px,4.5vw,72px) clamp(16px,4vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(24px,3vw,56px);align-items:start">
+        <div>
+          <p style="margin:0;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--teal)">{{ g.kicker }}</p>
+          <h2 style="margin:14px 0 0;font-size:clamp(20px,2vw,25px);letter-spacing:-.025em;max-width:16ch">{{ g.title }}</h2>
+        </div>
+        <div style="border-top:2px solid var(--color-divider)">
+          <sc-for list="{{ g.items }}" as="q" hint-placeholder-count="4">
+            <div style="border-bottom:1px solid var(--line)">
+              <button type="button" onClick="{{ q.toggle }}" aria-expanded="{{ q.expanded }}" style="width:100%;display:flex;gap:18px;align-items:flex-start;justify-content:space-between;background:transparent;border:0;cursor:pointer;padding:20px 0;text-align:left;font-family:var(--font-heading);font-weight:800;font-size:17px;line-height:1.35;letter-spacing:-.01em;color:var(--color-text)" style-hover="color:var(--navy)">
+                <span>{{ q.q }}</span>
+                <span style="flex:none;width:26px;height:26px;display:grid;place-items:center;border:2px solid var(--navy);color:var(--navy);font-family:var(--font-heading);font-weight:800;font-size:15px;line-height:1">{{ q.sign }}</span>
+              </button>
+              <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+                <p style="margin:0;padding:0 0 22px;font-size:15.5px;line-height:1.75;color:var(--ink-70);max-width:70ch;animation:mn-fade-up .3s both">{{ q.a }}</p>
+              </sc-if>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+  </sc-for>
+
+  <section style="background:var(--navy);color:#fff">
+    <div style="max-width:var(--shell);margin:0 auto;padding:clamp(48px,5.5vw,80px) clamp(16px,4vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px;align-items:center">
+      <div>
+        <h2 style="margin:0;color:#fff;font-size:clamp(23px,2.5vw,31px);letter-spacing:-.03em;line-height:1.06">Still have a question?</h2>
+        <p style="margin:16px 0 0;font-size:16.5px;line-height:1.7;color:rgba(255,255,255,.78);max-width:42ch">Contact support on +91 95381 24170 or write to manostattalentsolutions@gmail.com.</p>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px">
+        <a href="Contact.dc.html" class="btn btn-primary" style-hover="background:var(--color-accent-2-600);color:#fff" style="background:var(--teal);color:#06251e;padding:16px 26px;font-size:13px;letter-spacing:.07em;text-transform:uppercase">Contact support</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { open: { 'a0': true } };
+  renderVals() {
+    const data = [
+      { kicker: 'Hiring process', title: 'How we hire for you', prefix: 'a', items: [
+        ['How long does it take to receive a shortlist?', 'For most volume and mid-level roles we share a first shortlist within three to five working days of the profile being signed off. Specialist and senior mandates take longer because the search is confidential and head-hunted.'],
+        ['Do we interview candidates before you send them?', 'Yes. Every candidate goes through a telephonic discussion where we verify skill, experience, potential and aspiration before the profile reaches you.'],
+        ['What information do you need to start?', 'Role, headcount, work location, shift pattern, experience band and salary range. We convert that into a written ideal-candidate profile for your sign-off.'],
+        ['What if a candidate does not work out?', 'Replacement support is provided within the agreed period in your service agreement. For temporary deployments, cover is arranged for the contract duration.']
+      ]},
+      { kicker: 'Staffing solutions', title: 'Temporary and permanent', prefix: 'b', items: [
+        ['What is the difference between temporary and direct-hire staffing?', 'In temporary staffing the employee is on our rolls and deployed to your site, with attendance, wages and statutory administration handled by us. In direct-hire staffing the employee joins your payroll after we source, screen and close the role.'],
+        ['Do you handle bulk or volume hiring?', 'Yes. Volume hiring for plants, warehouses, stores and facility teams is a core part of our work, including shift-wise deployment.'],
+        ['Which industries do you cover?', 'Manufacturing, IT and non-IT, healthcare, hospitality, construction, administration, hotels, supermarkets, cleaning and housekeeping, and garments and textile.'],
+        ['Do you work outside Karnataka?', 'Our base is Karnataka and most deployments are in and around Bangalore, but we take mandates elsewhere in India on request.']
+      ]},
+      { kicker: 'Payroll services', title: 'Payroll and compliance', prefix: 'c', items: [
+        ['What does payroll management include?', 'Monthly payroll processing, payslips, statutory deductions, tax filing, ESI and PF remittances, challans and full-and-final settlements.'],
+        ['Are ESI and PF benefits provided?', 'Yes. We strictly follow all statutory requirements including ESI and PF benefits under Labour Laws for every eligible deployed employee.'],
+        ['Can you take over payroll for our existing staff?', 'Yes. Payroll-only engagements are available without any staffing component.'],
+        ['Can you share compliance documents for vendor onboarding?', 'Registration copies (ESIC, PF, PAN, TAN, CIN and Labour License) and filing records are shared on request.']
+      ]},
+      { kicker: 'Support', title: 'Contact support', prefix: 'd', items: [
+        ['How do I reach your team?', 'Call +91 95381 24170 or write to manostattalentsolutions@gmail.com. Office hours are Monday to Saturday, 9:30 AM to 6:30 PM IST.'],
+        ['I am a candidate, how do I apply?', 'Submit your CV on the Job Seekers page or email it to us. Your profile enters our in-house database and we contact you when a matching role opens.'],
+        ['Do you charge candidates any fee?', 'No. Candidates are never charged for registration, placement or any part of the process.']
+      ]}
+    ];
+    const openMap = this.state.open;
+    return {
+      groups: data.map(g => ({
+        kicker: g.kicker,
+        title: g.title,
+        items: g.items.map(([q, a], k) => {
+          const key = g.prefix + k;
+          const isOpen = !!openMap[key];
+          return {
+            q, a, open: isOpen, expanded: isOpen ? 'true' : 'false', sign: isOpen ? '\u2212' : '+',
+            toggle: () => this.setState(s => {
+              const next = Object.assign({}, s.open);
+              next[key] = !next[key];
+              return { open: next };
+            })
+          };
+        })
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Job Seekers | Find Jobs, Submit Your CV &amp; Apply | Manostat Talent Solutions</title>
+<meta name="description" content="Find jobs across manufacturing, IT, healthcare, hospitality, retail and facility roles. Submit your CV, upload your resume and get career guidance from Manostat Talent Solutions.">
+<link rel="stylesheet" href="styles.css">
+<script src="_ds/modernist-a969e3ec-0fac-439e-8ff7-f6b457d517c2/_ds_bundle.js"></script>
+<link rel="stylesheet" href="brand.css">
+<link rel="icon" type="image/png" href="assets/logo-manostat.png">
+<script src="site.js"></script>
+</helmet>
+<div style="background:#fff">
+<dc-import name="SiteHeader" active="JobSeekers" hint-size="100%,120px"></dc-import>
+
+<main>
+  <section style="background:var(--color-surface);border-bottom:2px solid var(--color-divider)">
+    <div style="max-width:var(--shell);margin:0 auto;padding:clamp(28px,3vw,40px) clamp(16px,4vw,40px) clamp(44px,5vw,72px)">
+      <nav aria-label="Breadcrumb" style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-55);display:flex;gap:10px;align-items:center">
+        <a href="index.html" style="color:inherit;text-decoration:none" style-hover="color:var(--navy)">Home</a><span>/</span><span style="color:var(--navy)">Job Seekers</span>
+      </nav>
+      <h1 style="margin:26px 0 0;font-size:clamp(29px,3.3vw,42px);letter-spacing:-.03em;line-height:1.04;max-width:20ch">Find work that fits what you can do.</h1>
+      <p style="margin:22px 0 0;font-size:clamp(15.5px,1.05vw,16.5px);line-height:1.7;color:var(--ink-70);max-width:60ch">Send us your CV once. We match it against openings across ten sectors and tell you where you stand.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:32px">
+        <a href="#openings" class="btn btn-primary" style="padding:16px 26px;font-size:13px;letter-spacing:.07em;text-transform:uppercase">View openings</a>
+        <a href="#apply" class="btn btn-secondary" style="padding:16px 26px;font-size:13px;letter-spacing:.07em;text-transform:uppercase;border-width:2px;border-color:var(--navy);color:var(--navy)" style-hover="background:var(--navy);color:#fff">Submit your CV</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-bottom:2px solid var(--color-divider)">
+    <div style="max-width:var(--shell);margin:0 auto;padding:clamp(44px,5vw,80px) clamp(16px,4vw,40px)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2px;background:var(--color-divider);border:2px solid var(--color-divider)">
+        <sc-for list="{{ how }}" as="h" hint-placeholder-count="3">
+          <div data-reveal="" style="background:#fff;padding:clamp(24px,2.6vw,34px)">
+            <div style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:.1em;color:var(--navy)">{{ h.num }}</div>
+            <h3 style="margin:14px 0 10px;font-size:18px;letter-spacing:-.015em">{{ h.title }}</h3>
+            <p style="margin:0;font-size:14.5px;line-height:1.7;color:var(--ink-70)">{{ h.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="openings" style="scroll-margin-top:140px;border-bottom:2px solid var(--color-divider)">
+    <div style="max-width:var(--shell);margin:0 auto;padding:clamp(52px,6vw,88px) clamp(16px,4vw,40px)">
+      <p style="margin:0;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--teal)">Current openings</p>
+      <h2 style="margin:14px 0 0;font-size:clamp(22px,2.3vw,29px);letter-spacing:-.025em">Roles we are hiring for now.</h2>
+      <div style="margin-top:24px;display:flex;flex-wrap:wrap;gap:8px;align-items:center">
+        <span style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-55);margin-right:6px">Filters</span>
+        <sc-for list="{{ filters }}" as="f" hint-placeholder-count="4">
+          <span style="display:inline-block;padding:9px 14px;border:1px dashed var(--color-divider);font-size:12.5px;color:var(--ink-55)">{{ f }}</span>
+        </sc-for>
+        <span style="font-size:11.5px;color:var(--ink-55)">Filtering to be enabled with the live jobs feed.</span>
+      </div>
+      <div style="margin-top:28px;border-top:2px solid var(--color-divider)">
+        <sc-for list="{{ jobs }}" as="j" hint-placeholder-count="5">
+          <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px 24px;align-items:center;padding:clamp(20px,2.2vw,26px) 0;border-bottom:1px solid var(--line)">
+            <div style="min-width:200px">
+              <h3 style="margin:0;font-size:17.5px;letter-spacing:-.015em">{{ j.title }}</h3>
+              <p style="margin:6px 0 0;font-size:13px;color:var(--ink-55)">{{ j.dept }}</p>
+            </div>
+            <div style="font-size:14.5px;color:var(--ink-70)">{{ j.location }}</div>
+            <div><span style="display:inline-block;padding:6px 11px;background:var(--color-accent-100);color:var(--color-accent-700);font-size:12px;font-weight:600;letter-spacing:.04em">{{ j.type }}</span></div>
+            <div style="font-size:14px;color:var(--ink-70)">{{ j.exp }}</div>
+            <div style="justify-self:start">
+              <a href="#apply" class="btn btn-primary" style="padding:12px 20px;font-size:12px;letter-spacing:.07em;text-transform:uppercase">Apply now</a>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin:20px 0 0;font-size:11.5px;color:var(--ink-55)">Sample content, demo listings for layout purposes. Replace with live vacancies.</p>
+    </div>
+  </section>
+
+  <section style="background:var(--color-accent-900);color:#fff;border-bottom:2px solid var(--color-divider)">
+    <div style="max-width:var(--shell);margin:0 auto;padding:clamp(52px,6vw,88px) clamp(16px,4vw,40px)">
+      <p style="margin:0;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--color-accent-2-300)">Career guidance</p>
+      <h2 style="margin:14px 0 0;color:#fff;font-size:clamp(22px,2.3vw,29px);letter-spacing:-.025em;max-width:24ch">Practical help before the interview.</h2>
+      <div style="margin-top:clamp(30px,3.5vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:clamp(20px,2.4vw,32px)">
+        <sc-for list="{{ guidance }}" as="g" hint-placeholder-count="4">
+          <div data-reveal="" style="border-top:3px solid var(--color-accent-2-500);padding-top:20px">
+            <h4 style="margin:0 0 10px;font-size:18px;color:#fff">{{ g.title }}</h4>
+            <p style="margin:0;font-size:14.5px;line-height:1.7;color:rgba(255,255,255,.75)">{{ g.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="apply" style="scroll-margin-top:140px;background:var(--color-surface)">
+    <div style="max-width:var(--shell);margin:0 auto;padding:clamp(52px,6vw,88px) clamp(16px,4vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(32px,4vw,64px)">
+      <div>
+        <p style="margin:0;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--teal)">Submit your CV</p>
+        <h2 style="margin:14px 0 0;font-size:clamp(22px,2.3vw,29px);letter-spacing:-.025em;max-width:18ch">Upload your resume.</h2>
+        <p style="margin:20px 0 0;font-size:15.5px;line-height:1.8;color:var(--ink-70);max-width:44ch">One submission puts you in our in-house database. We contact you when a role matches your skills, experience and location.</p>
+        <div style="margin-top:28px;border-top:2px solid var(--color-divider);padding-top:20px;font-size:15px;line-height:1.8;color:var(--ink-70)">
+          Or email your CV to<br>manostattalentsolutions@gmail.com
+        </div>
+      </div>
+      <form novalidate onSubmit="{{ onSubmit }}" style="background:#fff;border:1px solid var(--color-divider);padding:clamp(24px,3vw,38px);display:grid;gap:18px">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px">
+          <div class="field"><label for="js-name">Full name *</label><input class="input" id="js-name" name="name" style="min-height:44px" placeholder="Your name"></div>
+          <div class="field"><label for="js-phone">Mobile *</label><input class="input" id="js-phone" name="phone" style="min-height:44px" placeholder="10-digit mobile"></div>
+          <div class="field"><label for="js-email">Email *</label><input class="input" id="js-email" name="email" type="email" style="min-height:44px" placeholder="you@email.com"></div>
+          <div class="field"><label for="js-role">Role applied for *</label><input class="input" id="js-role" name="role" style="min-height:44px" placeholder="e.g. HR Executive"></div>
+          <div class="field"><label for="js-exp">Total experience</label><input class="input" id="js-exp" name="exp" style="min-height:44px" placeholder="e.g. 3 years"></div>
+          <div class="field"><label for="js-loc">Preferred location</label><input class="input" id="js-loc" name="loc" style="min-height:44px" placeholder="e.g. Bangalore"></div>
+        </div>
+        <div class="field">
+          <label for="js-file">Resume (PDF or DOC) *</label>
+          <input class="input" id="js-file" name="resume" type="file" accept=".pdf,.doc,.docx" style="min-height:44px;padding:9px 10px">
+          <p style="margin:6px 0 0;font-size:11.5px;color:var(--ink-55)">Maximum 5 MB. The file is validated in the browser only.</p>
+        </div>
+        <div class="field"><label for="js-note">Anything we should know</label><textarea class="input" id="js-note" name="note" style="min-height:90px" placeholder="Notice period, shift preference, certifications"></textarea></div>
+        <sc-if value="{{ hasErrors }}" hint-placeholder-val="{{ false }}">
+          <div role="alert" style="border-left:4px solid var(--color-accent);background:var(--color-accent-100);padding:14px 16px;font-size:14px;color:var(--color-accent-700)">{{ errorText }}</div>
+        </sc-if>
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <div role="status" style="border-left:4px solid var(--teal);background:var(--color-accent-2-100);padding:14px 16px;font-size:14px;color:var(--color-accent-2-700)">Application captured. We will contact you when a matching role opens. (Demo form: no data is transmitted.)</div>
+        </sc-if>
+        <button type="submit" class="btn btn-primary" style="justify-self:start;padding:16px 28px;font-size:13px;letter-spacing:.07em;text-transform:uppercase">Apply now</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { errors: [], sent: false };
+  renderVals() {
+    const e = this.state.errors;
+    return {
+      how: [
+        { num: '01', title: 'Find jobs', body: 'Openings across manufacturing, IT, healthcare, hospitality, retail, construction and facility roles.' },
+        { num: '02', title: 'Submit your CV', body: 'One resume goes into our in-house database and is matched against live and upcoming mandates.' },
+        { num: '03', title: 'Get support', body: 'Screening feedback, interview scheduling and documentation help through to your first day.' }
+      ],
+      filters: ['All industries', 'All locations', 'Full time', 'Contract'],
+      jobs: [
+        { title: 'HR Executive', dept: 'Human Resources', location: 'Bangalore, Karnataka', type: 'Full Time', exp: '1–3 years' },
+        { title: 'Production Supervisor', dept: 'Manufacturing', location: 'Karnataka', type: 'Full Time', exp: '3–6 years' },
+        { title: 'Warehouse Associate', dept: 'Supply Chain', location: 'Bangalore, Karnataka', type: 'Contract', exp: '0–2 years' },
+        { title: 'Customer Support Executive', dept: 'Non-IT / BPO', location: 'Bengaluru, Karnataka', type: 'Full Time', exp: '0–3 years' },
+        { title: 'Machine Operator', dept: 'Manufacturing', location: 'Karnataka', type: 'Full Time', exp: '1–4 years' }
+      ],
+      guidance: [
+        { title: 'Resume review', body: 'We tell you what a hiring manager in your sector actually looks for in the first ten seconds.' },
+        { title: 'Interview preparation', body: 'Role-specific questions, expected documentation and how to talk about gaps or shift work.' },
+        { title: 'Expectation setting', body: 'Honest guidance on salary bands, notice periods and growth paths in your industry.' },
+        { title: 'Documentation help', body: 'Support with ESI, PF, PAN and joining paperwork so your onboarding is not delayed.' }
+      ],
+      hasErrors: e.length > 0,
+      errorText: e.join(' '),
+      sent: this.state.sent,
+      onSubmit: (ev) => {
+        ev.preventDefault();
+        const f = ev.target;
+        const v = n => (f.elements[n] && f.elements[n].value || '').trim();
+        const errs = [];
+        if (v('name').length < 2) errs.push('Enter your full name.');
+        if (!/^[0-9+\-\s]{10,15}$/.test(v('phone'))) errs.push('Enter a valid mobile number.');
+        if (!/^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i.test(v('email'))) errs.push('Enter a valid email address.');
+        if (!v('role')) errs.push('Enter the role you are applying for.');
+        const file = f.elements['resume'] && f.elements['resume'].files && f.elements['resume'].files[0];
+        if (!file) errs.push('Attach your resume.');
+        else if (file.size > 5 * 1024 * 1024) errs.push('Resume must be under 5 MB.');
+        this.setState({ errors: errs, sent: errs.length === 0 });
+        if (!errs.length) f.reset();
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

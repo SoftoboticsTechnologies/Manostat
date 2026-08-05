@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Our Clients | Trusted Companies &amp; Success Stories | Manostat Talent Solutions</title>
+<meta name="description" content="Manostat Talent Solutions supports reputed organisations across manufacturing, food processing, retail and quick commerce. See client logos, success stories and testimonials.">
+<link rel="stylesheet" href="styles.css">
+<script src="_ds/modernist-a969e3ec-0fac-439e-8ff7-f6b457d517c2/_ds_bundle.js"></script>
+<link rel="stylesheet" href="brand.css">
+<link rel="icon" type="image/png" href="assets/logo-manostat.png">
+<script src="site.js"></script>
+<script src="image-slot.js"></script>
+</helmet>
+<div style="background:#fff">
+<dc-import name="SiteHeader" active="Clients" hint-size="100%,120px"></dc-import>
+
+<main>
+  <section style="background:var(--color-surface);border-bottom:2px solid var(--color-divider)">
+    <div style="max-width:var(--shell);margin:0 auto;padding:clamp(28px,3vw,40px) clamp(16px,4vw,40px) clamp(44px,5vw,72px)">
+      <nav aria-label="Breadcrumb" style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-55);display:flex;gap:10px;align-items:center">
+        <a href="index.html" style="color:inherit;text-decoration:none" style-hover="color:var(--navy)">Home</a><span>/</span><span style="color:var(--navy)">Clients</span>
+      </nav>
+      <h1 style="margin:26px 0 0;font-size:clamp(29px,3.3vw,42px);letter-spacing:-.03em;line-height:1.04;max-width:20ch">Organisations that trust us with hiring.</h1>
+      <p style="margin:22px 0 0;font-size:clamp(15.5px,1.05vw,16.5px);line-height:1.7;color:var(--ink-70);max-width:60ch">We are proud to serve some of the most reputed organisations across industries.</p>
+    </div>
+  </section>
+
+  <section style="border-bottom:2px solid var(--color-divider)">
+    <div style="max-width:var(--shell);margin:0 auto;padding:clamp(44px,5vw,80px) clamp(16px,4vw,40px)">
+      <p style="margin:0;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--teal)">Trusted companies</p>
+      <h2 style="margin:14px 0 0;font-size:clamp(21px,2.1vw,27px);letter-spacing:-.02em">Client roster</h2>
+      <div style="margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:clamp(14px,1.6vw,20px)">
+        <sc-for list="{{ clients }}" as="c" hint-placeholder-count="6">
+          <figure data-reveal="" style="margin:0;background:#fff;border:1px solid var(--line);border-radius:4px;padding:24px 18px 20px;display:flex;flex-direction:column;align-items:center;gap:18px;transition:transform .3s cubic-bezier(.2,.8,.3,1),box-shadow .3s ease,border-color .3s ease" style-hover="transform:translateY(-6px);box-shadow:0 14px 30px rgba(15,76,129,.14);border-color:var(--color-accent-300)">
+            <span style="height:68px;width:100%;display:grid;place-items:center">
+              <img src="{{ c.logo }}" alt="{{ c.name }} logo" loading="lazy" style="max-height:68px;max-width:100%;width:auto;object-fit:contain;mix-blend-mode:multiply">
+            </span>
+            <figcaption style="text-align:center">
+              <span style="display:block;font-size:13.5px;font-weight:600;line-height:1.45;color:var(--color-text)">{{ c.name }}</span>
+              <span style="display:block;margin-top:5px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--teal)">{{ c.sector }}</span>
+            </figcaption>
+          </figure>
+        </sc-for>
+      </div>
+      <p style="margin:20px 0 0;font-size:11.5px;color:var(--ink-55)">Client logos as supplied in the company brochure.</p>
+    </div>
+  </section>
+
+  <section style="border-bottom:2px solid var(--color-divider)">
+    <div style="max-width:var(--shell);margin:0 auto;padding:clamp(52px,6vw,88px) clamp(16px,4vw,40px)">
+      <p style="margin:0;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--teal)">Success stories</p>
+      <h2 style="margin:14px 0 0;font-size:clamp(22px,2.3vw,29px);letter-spacing:-.025em;max-width:24ch">Case studies, ready for your numbers.</h2>
+      <div style="margin-top:clamp(28px,3.5vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:clamp(18px,2vw,26px)">
+        <sc-for list="{{ stories }}" as="s" hint-placeholder-count="3">
+          <article data-reveal="" style="border:1px solid var(--line)">
+            <div style="position:relative;height:190px;border-bottom:1px solid var(--line)">
+              <image-slot id="{{ s.slot }}" shape="rect" placeholder="Drop a site or workplace photograph"></image-slot>
+            </div>
+            <div style="padding:26px 24px">
+              <div style="font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal)">{{ s.sector }}</div>
+              <h3 style="margin:12px 0 10px;font-size:18px;letter-spacing:-.015em">{{ s.title }}</h3>
+              <p style="margin:0;font-size:14.5px;line-height:1.7;color:var(--ink-70)">{{ s.body }}</p>
+              <div style="margin-top:18px;border-top:1px solid var(--line);padding-top:14px;font-size:13px;color:var(--ink-55)">Placeholder case study, outcome metrics to be supplied.</div>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--color-accent-900);color:#fff;border-bottom:2px solid var(--color-divider)">
+    <div style="max-width:var(--shell);margin:0 auto;padding:clamp(52px,6vw,88px) clamp(16px,4vw,40px)">
+      <p style="margin:0;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--color-accent-2-300)">Client testimonials</p>
+      <h2 style="margin:14px 0 0;color:#fff;font-size:clamp(22px,2.3vw,29px);letter-spacing:-.025em">In their words</h2>
+      <div style="margin-top:clamp(30px,3.5vw,44px);border-top:2px solid rgba(255,255,255,.22);padding-top:clamp(28px,3vw,40px);min-height:210px">
+        <blockquote style="margin:0;font-family:var(--font-heading);font-weight:600;font-size:clamp(18px,1.9vw,24px);line-height:1.35;letter-spacing:-.02em;color:#fff;max-width:34ch">{{ quote }}</blockquote>
+        <div style="margin-top:26px;font-size:13.5px;color:rgba(255,255,255,.7)">{{ quoteMeta }}</div>
+      </div>
+      <div style="margin-top:28px;display:flex;align-items:center;gap:14px">
+        <button type="button" onClick="{{ prev }}" aria-label="Previous testimonial" style="width:46px;height:46px;display:grid;place-items:center;background:transparent;border:2px solid rgba(255,255,255,.3);color:#fff;cursor:pointer" style-hover="background:var(--teal);border-color:var(--teal);color:#fff">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" onClick="{{ next }}" aria-label="Next testimonial" style="width:46px;height:46px;display:grid;place-items:center;background:transparent;border:2px solid rgba(255,255,255,.3);color:#fff;cursor:pointer" style-hover="background:var(--teal);border-color:var(--teal);color:#fff">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+        <span style="margin-left:8px;font-size:12.5px;letter-spacing:.1em;color:rgba(255,255,255,.6)">{{ counter }}</span>
+      </div>
+      <p style="margin:24px 0 0;font-size:11.5px;color:rgba(255,255,255,.45)">Placeholder slots, no verified client quotes are published yet.</p>
+    </div>
+  </section>
+
+  <section style="background:var(--navy);color:#fff">
+    <div style="max-width:var(--shell);margin:0 auto;padding:clamp(48px,5.5vw,80px) clamp(16px,4vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px;align-items:center">
+      <h2 style="margin:0;color:#fff;font-size:clamp(23px,2.5vw,31px);letter-spacing:-.03em;line-height:1.06">Become a hiring partner.</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:12px">
+        <a href="Employers.dc.html" class="btn btn-primary" style-hover="background:var(--color-accent-2-600);color:#fff" style="background:var(--teal);color:#06251e;padding:16px 26px;font-size:13px;letter-spacing:.07em;text-transform:uppercase">Request Employees</a>
+        <a href="Contact.dc.html" class="btn btn-secondary" style="padding:16px 26px;font-size:13px;letter-spacing:.07em;text-transform:uppercase;border-width:2px;border-color:rgba(255,255,255,.45);color:#fff" style-hover="background:rgba(255,255,255,.12)">Contact Us</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { t: 0 };
+  renderVals() {
+    const quotes = [
+      ['Client testimonial placeholder, replace with a verified quote from a hiring partner.', 'Client name · Designation, Company'],
+      ['Client testimonial placeholder, replace with a verified quote about candidate quality.', 'Client name · Designation, Company'],
+      ['Client testimonial placeholder, replace with a verified quote about compliance support.', 'Client name · Designation, Company']
+    ];
+    const i = this.state.t % quotes.length;
+    return {
+      clients: [
+        { name: 'Veiva Scientific India Pvt Ltd', sector: 'Scientific & lab', logo: 'assets/clients/veiva.png' },
+        { name: 'IQF Foods Pvt Ltd', sector: 'Food processing', logo: 'assets/clients/iqf.png' },
+        { name: 'GR Enterprises', sector: 'Enterprise services', logo: 'assets/clients/gr-enterprises.png' },
+        { name: 'Flipkart', sector: 'E-commerce', logo: 'assets/clients/flipkart.png' },
+        { name: 'Blinkit', sector: 'Quick commerce', logo: 'assets/clients/blinkit.png' },
+        { name: 'Amazon', sector: 'E-commerce & logistics', logo: 'assets/clients/amazon.png' }
+      ],
+      stories: [
+        { slot: 'client-story-1', sector: 'Manufacturing', title: 'Volume hiring for a production line', body: 'Placeholder narrative: brief, headcount deployed, turnaround time and retention after ninety days.' },
+        { slot: 'client-story-2', sector: 'Retail & FMCG', title: 'Store and warehouse staffing at scale', body: 'Placeholder narrative: seasonal ramp-up, shift coverage and attendance administration.' },
+        { slot: 'client-story-3', sector: 'Administration', title: 'Payroll and compliance handover', body: 'Placeholder narrative: statutory filings taken over, error rate and time saved for the client team.' }
+      ],
+      quote: quotes[i][0],
+      quoteMeta: quotes[i][1],
+      counter: (i + 1) + ' / ' + quotes.length,
+      next: () => this.setState(s => ({ t: s.t + 1 })),
+      prev: () => this.setState(s => ({ t: s.t + quotes.length - 1 }))
+    };
+  }
+}
+</script>
+</body>
+</html>
