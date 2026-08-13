@@ -72,9 +72,7 @@
               <span style="width:42px;height:42px;flex:none;display:grid;place-items:center;border:2px solid var(--navy);color:var(--navy)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
               <span><span style="display:block;font-size:14.5px;font-weight:600">Instagram</span><span style="display:block;margin-top:2px;font-size:13px;color:var(--ink-55)">@manostat_talent_solutions</span></span>
             </a>
-            <div style="display:flex;gap:10px">
-              <a href="#" aria-label="WhatsApp" style="width:42px;height:42px;display:grid;place-items:center;border:2px solid var(--navy);color:var(--navy)" style-hover="background:var(--navy);color:#fff"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 21l1.9-5.4A8.5 8.5 0 1 1 21 11.5z"/></svg></a>
-            </div>
+            
           </div>
         </div>
       </div>
@@ -99,10 +97,9 @@
           <div role="alert" style="border-left:4px solid var(--color-accent);background:var(--color-accent-100);padding:14px 16px;font-size:14px;color:var(--color-accent-700)">{{ errorText }}</div>
         </sc-if>
         <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
-          <div role="status" style="border-left:4px solid var(--teal);background:var(--color-accent-2-100);padding:14px 16px;font-size:14px;color:var(--color-accent-2-700)">Message received. We will respond within one business day. (Demo form: no data is transmitted.)</div>
+          <div role="status" style="border-left:4px solid var(--teal);background:var(--color-accent-2-100);padding:14px 16px;font-size:14px;color:var(--color-accent-2-700)">Message sent. We will respond within one business day.</div>
         </sc-if>
-        <button type="submit" class="btn btn-primary" style="justify-self:start;padding:16px 28px;font-size:13px;letter-spacing:.07em;text-transform:uppercase">Send message</button>
-        <p style="margin:0;font-size:11.5px;color:var(--ink-55)">Front-end validation only, no backend is connected in this build.</p>
+        <button type="submit" class="btn btn-primary" style="justify-self:start;padding:16px 28px;font-size:13px;letter-spacing:.07em;text-transform:uppercase">{{ submitLabel }}</button>
       </form>
     </div>
   </section>
@@ -134,14 +131,15 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { errors: [], sent: false };
+  state = { errors: [], sent: false, sending: false };
   renderVals() {
     const e = this.state.errors;
     return {
       hasErrors: e.length > 0,
       errorText: e.join(' '),
       sent: this.state.sent,
-      onSubmit: (ev) => {
+      submitLabel: this.state.sending ? 'Sending…' : 'Send message',
+      onSubmit: async (ev) => {
         ev.preventDefault();
         const f = ev.target;
         const v = n => (f.elements[n] && f.elements[n].value || '').trim();
@@ -151,8 +149,31 @@ class Component extends DCLogic {
         if (!/^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i.test(v('email'))) errs.push('Enter a valid email address.');
         if (!v('type')) errs.push('Tell us who you are.');
         if (v('message').length < 10) errs.push('Add a short message (at least 10 characters).');
-        this.setState({ errors: errs, sent: errs.length === 0 });
-        if (!errs.length) f.reset();
+        if (errs.length) {
+          this.setState({ errors: errs, sent: false });
+          return;
+        }
+        this.setState({ errors: [], sending: true });
+        try {
+          const res = await fetch('https://formsubmit.co/ajax/manostattalentsolutions@gmail.com', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({
+              name: v('name'),
+              phone: v('phone'),
+              email: v('email'),
+              enquirer_type: v('type'),
+              subject: v('subject') || 'Website contact form enquiry',
+              message: v('message'),
+              _subject: 'New enquiry from manostattalentsolutions.com contact form'
+            })
+          });
+          if (!res.ok) throw new Error('Request failed');
+          this.setState({ sending: false, sent: true });
+          f.reset();
+        } catch (err) {
+          this.setState({ sending: false, errors: ['Could not send your message right now. Please email us directly at manostattalentsolutions@gmail.com.'] });
+        }
       }
     };
   }
