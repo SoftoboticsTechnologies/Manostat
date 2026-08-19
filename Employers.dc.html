@@ -41,9 +41,9 @@
       <div style="margin-top:clamp(28px,3.5vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2px;background:var(--color-divider);border:2px solid var(--color-divider)">
         <sc-for list="{{ solutions }}" as="s" hint-placeholder-count="4">
           <div data-reveal="" style="background:#fff;padding:clamp(24px,2.6vw,34px);transition:background .25s" style-hover="background:var(--navy);color:#fff">
-            <div style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:.1em;color:var(--navy)">{{ s.num }}</div>
+            <div style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:.1em;color:var(--navy);transition:color .25s" style-hover="color:var(--color-accent-2-300)">{{ s.num }}</div>
             <h3 style="margin:14px 0 10px;font-size:18px;letter-spacing:-.015em">{{ s.title }}</h3>
-            <p style="margin:0;font-size:14.5px;line-height:1.7;color:var(--ink-70)">{{ s.body }}</p>
+            <p style="margin:0;font-size:14.5px;line-height:1.7;color:var(--ink-70);transition:color .25s" style-hover="color:rgba(255,255,255,.85)">{{ s.body }}</p>
           </div>
         </sc-for>
       </div>

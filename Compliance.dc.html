@@ -39,10 +39,10 @@
           <div data-reveal="" style="background:#fff;padding:clamp(24px,2.6vw,32px);transition:background .2s" style-hover="background:var(--navy);color:#fff">
             <div style="display:flex;align-items:center;gap:10px">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-              <div style="font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-55)">{{ r.label }}</div>
+              <div style="font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-55);transition:color .2s" style-hover="color:rgba(255,255,255,.7)">{{ r.label }}</div>
             </div>
             <div style="margin-top:14px;font-family:var(--font-heading);font-weight:800;font-size:19px;letter-spacing:-.01em;word-break:break-all">{{ r.value }}</div>
-            <p style="margin:12px 0 0;font-size:13.5px;line-height:1.6;color:var(--ink-70)">{{ r.note }}</p>
+            <p style="margin:12px 0 0;font-size:13.5px;line-height:1.6;color:var(--ink-70);transition:color .2s" style-hover="color:rgba(255,255,255,.85)">{{ r.note }}</p>
           </div>
         </sc-for>
       </div>

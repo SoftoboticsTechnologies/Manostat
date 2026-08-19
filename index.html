@@ -85,9 +85,9 @@
       <div data-row5="" style="margin-top:clamp(32px,4vw,56px);display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:2px;background:var(--color-divider)">
         <sc-for list="{{ why }}" as="w" hint-placeholder-count="5">
           <div data-reveal="" style="background:#fff;padding:clamp(24px,2.6vw,34px);transition:background .25s" style-hover="background:var(--navy);color:#fff">
-            <div style="font-family:var(--font-heading);font-weight:800;font-size:13px;color:var(--navy);letter-spacing:.08em">{{ w.num }}</div>
+            <div style="font-family:var(--font-heading);font-weight:800;font-size:13px;color:var(--navy);letter-spacing:.08em;transition:color .25s" style-hover="color:var(--color-accent-2-300)">{{ w.num }}</div>
             <h4 style="margin:14px 0 10px;font-size:19px;letter-spacing:-.01em">{{ w.title }}</h4>
-            <p style="margin:0;font-size:14.5px;line-height:1.65;color:var(--ink-70)">{{ w.body }}</p>
+            <p style="margin:0;font-size:14.5px;line-height:1.65;color:var(--ink-70);transition:color .25s" style-hover="color:rgba(255,255,255,.85)">{{ w.body }}</p>
           </div>
         </sc-for>
       </div>
