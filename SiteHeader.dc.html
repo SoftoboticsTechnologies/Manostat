@@ -22,13 +22,13 @@
       <span style="margin-left:auto;display:flex;align-items:center;gap:7px;color:var(--color-accent-2-300)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>ESI &amp; PF compliant · CIN U78300KA2026PTC214773</span>
     </div>
   </div>
-  <div style="max-width:var(--shell);margin:0 auto;padding:0 clamp(20px,4vw,44px);display:flex;align-items:center;gap:20px;min-height:92px">
+  <div style="width:100%;margin:0 auto;padding:0 clamp(16px,3vw,32px);display:flex;align-items:center;gap:20px;min-height:92px">
     <a href="index.html" aria-label="Manostat Talent Solutions, home" style="display:flex;align-items:center;gap:12px;text-decoration:none;padding:16px 0;flex:none">
       <img src="assets/manostat%20logo.jpeg" alt="Manostat Talent Solutions" style="height:clamp(52px,6vw,64px);width:auto;max-width:100%;object-fit:contain;display:block">
       <span style="font-family:var(--font-heading);font-weight:800;font-size:clamp(15px,1.6vw,19px);letter-spacing:-.01em;color:var(--navy);line-height:1.15;white-space:nowrap">Manostat Talent Solutions</span>
     </a>
     <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
-      <nav style="margin-left:auto;display:flex;align-items:center;gap:4px">
+      <nav style="flex:1 1 auto;display:flex;align-items:center;justify-content:center;gap:4px;min-width:0">
         <sc-for list="{{ nav }}" as="item" hint-placeholder-count="10">
           <a href="{{ item.href }}" style="position:relative;display:flex;align-items:center;height:92px;white-space:nowrap;text-decoration:none;font-size:11.5px;font-weight:600;letter-spacing:.035em;text-transform:uppercase;color:var(--ink-70);padding:0 5px;transition:color .2s ease" style-hover="color:var(--navy)">
             {{ item.label }}
@@ -37,8 +37,8 @@
             </sc-if>
           </a>
         </sc-for>
-        <a href="Contact.dc.html" class="btn btn-primary" style="flex:none;margin-left:12px;padding:13px 18px;letter-spacing:.06em;text-transform:uppercase;font-size:12px;white-space:nowrap">Get Started</a>
       </nav>
+      <a href="Contact.dc.html" class="btn btn-primary" style="flex:none;padding:13px 18px;letter-spacing:.06em;text-transform:uppercase;font-size:12px;white-space:nowrap">Get Started</a>
     </sc-if>
     <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
       <button type="button" onClick="{{ toggle }}" aria-label="Menu" style="margin-left:auto;flex:none;width:48px;height:48px;display:grid;place-items:center;background:var(--navy);color:#fff;border:0;border-radius:4px;cursor:pointer;transition:background .2s ease" style-hover="background:var(--color-accent-600)">

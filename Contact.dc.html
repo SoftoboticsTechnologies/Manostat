@@ -155,19 +155,23 @@ class Component extends DCLogic {
         }
         this.setState({ errors: [], sending: true });
         try {
-          const res = await fetch('https://formsubmit.co/ajax/manostattalentsolutions@gmail.com', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-            body: JSON.stringify({
-              name: v('name'),
-              phone: v('phone'),
-              email: v('email'),
-              enquirer_type: v('type'),
-              subject: v('subject') || 'Website contact form enquiry',
-              message: v('message'),
-              _subject: 'New enquiry from manostattalentsolutions.com contact form'
-            })
-          });
+          const res = await fetch('https://api.web3forms.com/submit', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+  },
+  body: JSON.stringify({
+    access_key: '',
+    name: v('name'),
+    phone: v('phone'),
+    email: v('email'),
+    enquirer_type: v('type'),
+    subject: v('subject') || 'Website contact form enquiry',
+    message: v('message'),
+    _subject: 'New enquiry from manostattalentsolutions.com contact form'
+  })
+});
           if (!res.ok) throw new Error('Request failed');
           this.setState({ sending: false, sent: true });
           f.reset();

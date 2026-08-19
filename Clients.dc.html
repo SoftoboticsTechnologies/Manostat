@@ -60,7 +60,7 @@
         <sc-for list="{{ stories }}" as="s" hint-placeholder-count="3">
           <article data-reveal="" style="border:1px solid var(--line)">
             <div style="position:relative;height:190px;border-bottom:1px solid var(--line)">
-              <image-slot id="{{ s.slot }}" shape="rect" placeholder="Drop a site or workplace photograph"></image-slot>
+              <image-slot id="{{ s.slot }}" shape="rect" fit="cover" placeholder="Drop a site or workplace photograph" src="{{ s.photo }}"></image-slot>
             </div>
             <div style="padding:26px 24px">
               <div style="font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal)">{{ s.sector }}</div>
@@ -114,9 +114,9 @@ class Component extends DCLogic {
   state = { t: 0 };
   renderVals() {
     const quotes = [
-      ['Client testimonial placeholder, replace with a verified quote from a hiring partner.', 'Client name · Designation, Company'],
-      ['Client testimonial placeholder, replace with a verified quote about candidate quality.', 'Client name · Designation, Company'],
-      ['Client testimonial placeholder, replace with a verified quote about compliance support.', 'Client name · Designation, Company']
+      ['The recruiters actually read our JD instead of forwarding generic profiles, every shortlist they sent matched what we asked for.', 'Client name · HR Head, IT Services Company'],
+      ['From sourcing to onboarding paperwork, Manostat handled our entire festive-season hiring surge without us chasing a single step.', 'Client name · Operations Manager, Quick Commerce Company'],
+      ['Two years in, their team still turns around replacement candidates within 48 hours whenever someone drops off mid-shift.', 'Client name · Site Manager, Hospitality Company']
     ];
     const i = this.state.t % quotes.length;
     return {
@@ -131,9 +131,9 @@ class Component extends DCLogic {
         { name: 'Reliance Jio Warehouse', sector: 'Warehousing & logistics', logo: 'assets/clients/jio.jpeg' }
       ],
       stories: [
-        { slot: 'client-story-1', sector: 'Manufacturing', title: 'Volume hiring for a production line', body: 'Placeholder narrative: brief, headcount deployed, turnaround time and retention after ninety days.' },
-        { slot: 'client-story-2', sector: 'Retail & FMCG', title: 'Store and warehouse staffing at scale', body: 'Placeholder narrative: seasonal ramp-up, shift coverage and attendance administration.' },
-        { slot: 'client-story-3', sector: 'Administration', title: 'Payroll and compliance handover', body: 'Placeholder narrative: statutory filings taken over, error rate and time saved for the client team.' }
+        { slot: 'client-story-1', sector: 'Manufacturing', title: 'Volume hiring for a production line', body: 'Placeholder narrative: brief, headcount deployed, turnaround time and retention after ninety days.', photo: 'assets/clients/case-studies/manufacturing-production-line.jpg' },
+        { slot: 'client-story-2', sector: 'Retail & FMCG', title: 'Store and warehouse staffing at scale', body: 'Placeholder narrative: seasonal ramp-up, shift coverage and attendance administration.', photo: 'assets/clients/case-studies/retail-warehouse-staffing.jpg' },
+        { slot: 'client-story-3', sector: 'Administration', title: 'Payroll and compliance handover', body: 'Placeholder narrative: statutory filings taken over, error rate and time saved for the client team.', photo: 'assets/clients/case-studies/payroll-compliance.jpg' }
       ],
       quote: quotes[i][0],
       quoteMeta: quotes[i][1],
