@@ -134,16 +134,16 @@
         <div class="field">
           <label for="c-file">Resume (PDF or DOC) *</label>
           <input class="input" id="c-file" name="resume" type="file" accept=".pdf,.doc,.docx" style="min-height:44px;padding:9px 10px">
-          <p style="margin:6px 0 0;font-size:11.5px;color:var(--ink-55)">Maximum 5 MB.</p>
+          <p style="margin:6px 0 0;font-size:11.5px;color:var(--ink-55)">Maximum 5 MB. This form cannot attach the file itself — after submitting, please also email your resume to manostattalentsolutions@gmail.com.</p>
         </div>
         <div class="field"><label for="c-note">Why Manostat?</label><textarea class="input" id="c-note" name="note" style="min-height:90px" placeholder="A few lines about yourself"></textarea></div>
         <sc-if value="{{ hasErrors }}" hint-placeholder-val="{{ false }}">
           <div role="alert" style="border-left:4px solid var(--color-accent);background:var(--color-accent-100);padding:14px 16px;font-size:14px;color:var(--color-accent-700)">{{ errorText }}</div>
         </sc-if>
         <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
-          <div role="status" style="border-left:4px solid var(--teal);background:var(--color-accent-2-100);padding:14px 16px;font-size:14px;color:var(--color-accent-2-700)">Application received. We will be in touch shortly. (Demo form: no data is transmitted.)</div>
+          <div role="status" style="border-left:4px solid var(--teal);background:var(--color-accent-2-100);padding:14px 16px;font-size:14px;color:var(--color-accent-2-700)">Application received. Please also email your resume to manostattalentsolutions@gmail.com — we will be in touch shortly.</div>
         </sc-if>
-        <button type="submit" class="btn btn-primary" style="justify-self:start;padding:16px 28px;font-size:13px;letter-spacing:.07em;text-transform:uppercase">Submit application</button>
+        <button type="submit" class="btn btn-primary" style="justify-self:start;padding:16px 28px;font-size:13px;letter-spacing:.07em;text-transform:uppercase">{{ submitLabel }}</button>
       </form>
     </div>
   </section>
@@ -154,7 +154,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { errors: [], sent: false };
+  state = { errors: [], sent: false, sending: false };
   renderVals() {
     const e = this.state.errors;
     return {
@@ -179,7 +179,8 @@ class Component extends DCLogic {
       hasErrors: e.length > 0,
       errorText: e.join(' '),
       sent: this.state.sent,
-      onSubmit: (ev) => {
+      submitLabel: this.state.sending ? 'Sending…' : 'Submit application',
+      onSubmit: async (ev) => {
         ev.preventDefault();
         const f = ev.target;
         const v = n => (f.elements[n] && f.elements[n].value || '').trim();
@@ -191,8 +192,31 @@ class Component extends DCLogic {
         const file = f.elements['resume'] && f.elements['resume'].files && f.elements['resume'].files[0];
         if (!file) errs.push('Attach your resume.');
         else if (file.size > 5 * 1024 * 1024) errs.push('Resume must be under 5 MB.');
-        this.setState({ errors: errs, sent: errs.length === 0 });
-        if (!errs.length) f.reset();
+        if (errs.length) {
+          this.setState({ errors: errs, sent: false });
+          return;
+        }
+        this.setState({ errors: [], sending: true });
+        try {
+          const res = await fetch('https://k5iewetbri.execute-api.ap-south-1.amazonaws.com/prod/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              firstName: v('name'),
+              phoneNumber: v('phone'),
+              email: v('email'),
+              roleAppliedFor: v('role'),
+              resumeFileName: file.name,
+              message: (v('note') || 'Job application via website form.') + ' [Resume file "' + file.name + '" was selected — this form cannot attach it. Please ask the candidate to email it to manostattalentsolutions@gmail.com.]',
+              subject: 'New job application — Manostat website'
+            })
+          });
+          if (!res.ok) throw new Error('Request failed');
+          this.setState({ sending: false, errors: [], sent: true });
+          f.reset();
+        } catch (err) {
+          this.setState({ sending: false, errors: ['Could not send your application right now. Please email your details and resume directly to manostattalentsolutions@gmail.com.'] });
+        }
       }
     };
   }
